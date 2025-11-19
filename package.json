@@ -1,0 +1,25 @@
+{
+  "name": "terribledialogue-lang",
+  "displayName": "TerribleDialogue Lang",
+  "description": "Syntax highlighting for TerribleDialogue lang",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.106.1"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "terrible-dialogue",
+      "aliases": ["TerribleDialogue", "terrible-dialogue"],
+      "extensions": [".tdlg"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "terrible-dialogue",
+      "scopeName": "source.tdlg",
+      "path": "./syntaxes/terrible-dialogue.tmLanguage.json"
+    }]
+  }
+}
