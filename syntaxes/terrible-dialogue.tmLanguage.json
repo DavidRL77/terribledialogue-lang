@@ -1,32 +1,64 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "TerribleDialogue",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.terrible-dialogue",
-				"match": "\\b(set|node)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.terrible-dialogue",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.terrible-dialogue",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.tdlg"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "TerribleDialogue",
+  "scopeName": "source.tdlg",
+  "patterns": [
+    { "include": "#header" },
+    { "include": "#flow" },
+    { "include": "#strings" }
+  ],
+  "repository": {
+    "header": {
+      "patterns": [
+        {
+          "name": "meta.section.terrible-dialogue",
+          "match": "^(\\s*)(set|node)(\\s+)([A-Za-z0-9_]+):(\\s*)$",
+          "captures": {
+            "2": { "name": "entity.name.type.flow-target.terrible-dialogue" },
+            "4": { "name": "entity.name.tag.terrible-dialogue" },
+            "5": { "name": "punctuation.separator.colon.terrible-dialogue" }
+          }
+        }
+      ]
+    },
+
+    "flow": {
+      "patterns": [
+        {
+          "name": "keyword.operator.flow.terrible-dialogue",
+          "match": "(=>)"
+        },
+        {
+          "name": "meta.flow-target.terrible-dialogue",
+          "match": "^\n?\\s*=>\\s*(node|set):?([A-Za-z0-9_]*)|(END|nothing|random|previous)$",
+          "captures": {
+            "1": { "name": "keyword.control.terrible-dialogue" },
+            "2": { "name": "entity.name.function.terrible-dialogue" },
+            "3": { "name" : "keyword.control.terrible-dialogue"}
+          }
+        },
+        {
+          "name": "meta.flow-start.terrible-dialogue",
+          "match": "^\n?\\s*>>\\s*(node):?([A-Za-z0-9_]*)|(random)$",
+          "captures": {
+            "1": { "name": "keyword.control.terrible-dialogue" },
+            "2": { "name": "entity.name.function.terrible-dialogue" },
+            "3": { "name" : "keyword.control.terrible-dialogue"}
+          }
+        }
+      ]
+    },
+
+    "strings": {
+      "name": "string.quoted.double.terrible-dialogue",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.terrible-dialogue",
+          "match": "\\\\."
+        }
+      ]
+    }
+  }
 }
