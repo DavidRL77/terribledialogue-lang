@@ -5,7 +5,8 @@
   "patterns": [
     { "include": "#header" },
     { "include": "#flow" },
-    { "include": "#strings" }
+    { "include": "#strings" },
+    { "include": "#attributes"}
   ],
   "repository": {
     "header": {
@@ -25,16 +26,13 @@
     "flow": {
       "patterns": [
         {
-          "name": "keyword.operator.flow.terrible-dialogue",
-          "match": "(=>)"
-        },
-        {
           "name": "meta.flow-target.terrible-dialogue",
-          "match": "^\n?\\s*=>\\s*(node|set):?([A-Za-z0-9_]*)|(END|nothing|random|previous)$",
+          "match": "^\\s*(goto)\\s(?:(node|set):([A-Za-z0-9_]+)|(END|nothing|random|previous))$",
           "captures": {
             "1": { "name": "keyword.control.terrible-dialogue" },
             "2": { "name": "entity.name.function.terrible-dialogue" },
-            "3": { "name" : "keyword.control.terrible-dialogue"}
+            "3": { "name" : "entity.name.selector.terrible-dialogue"},
+            "4": { "name": "keyword.control.terrible-dialogue"}
           }
         },
         {
@@ -59,6 +57,14 @@
           "match": "\\\\."
         }
       ]
+    },
+
+    "attributes": {
+      "name": "meta.line-attributes.terrible-dialogue",
+      "match": "\\[([A-Za-z0-9_]+)=(\"?[A-Za-z0-9_]+\"?)\\]",
+      "captures": {
+        "1": {"name":"entity.other.attribute-name"}
+      }
     }
   }
 }
