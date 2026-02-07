@@ -27,17 +27,18 @@
       "patterns": [
         {
           "name": "meta.flow-target.terrible-dialogue",
-          "match": "^\\s*(goto)\\s(?:(node|set):([A-Za-z0-9_]+)|(END|nothing|random|previous))$",
+          "match": "^\\s*(goto)\\s(?:(node|set):([A-Za-z0-9_]+)|(END|nothing|random|previous))(\\snow)?$",
           "captures": {
             "1": { "name": "keyword.control.terrible-dialogue" },
             "2": { "name": "entity.name.function.terrible-dialogue" },
             "3": { "name" : "entity.name.tag.terrible-dialogue"},
-            "4": { "name": "keyword.control.terrible-dialogue"}
+            "4": { "name": "keyword.control.terrible-dialogue"},
+            "5": {"name": "keyword.modifier.terrible-dialogue"}
           }
         },
         {
           "name": "meta.flow-start.terrible-dialogue",
-          "match": "^\n?\\s*>>\\s*(node):?([A-Za-z0-9_]*)|(random)$",
+          "match": "^\n?\\s*>>\\s*(node|set):?([A-Za-z0-9_]*)|(random)$",
           "captures": {
             "1": { "name": "keyword.control.terrible-dialogue" },
             "2": { "name": "entity.name.function.terrible-dialogue" },
