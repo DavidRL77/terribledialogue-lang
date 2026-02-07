@@ -31,7 +31,7 @@
           "captures": {
             "1": { "name": "keyword.control.terrible-dialogue" },
             "2": { "name": "entity.name.function.terrible-dialogue" },
-            "3": { "name" : "entity.name.selector.terrible-dialogue"},
+            "3": { "name" : "entity.name.tag.terrible-dialogue"},
             "4": { "name": "keyword.control.terrible-dialogue"}
           }
         },
